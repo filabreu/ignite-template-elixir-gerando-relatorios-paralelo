@@ -6,21 +6,21 @@
     {
       "line": 7,
       "module": "Elixir.GenReport.ParserTest",
-      "file": "/home/filipeabreu/dev/learn/elixir/rocketseat/ignite-template-elixir-gerando-relatorios/test/parser_test.exs",
+      "file": "/home/filipeabreu/dev/learn/elixir/rocketseat/ignite-template-elixir-gerando-relatorios-paralelo/test/parser_test.exs",
       "test": "test parse_file/1 parses the file",
       "describe": "parse_file/1"
     },
     {
       "line": 16,
       "module": "Elixir.GenReportTest",
-      "file": "/home/filipeabreu/dev/learn/elixir/rocketseat/ignite-template-elixir-gerando-relatorios/test/gen_report_test.exs",
+      "file": "/home/filipeabreu/dev/learn/elixir/rocketseat/ignite-template-elixir-gerando-relatorios-paralelo/test/gen_report_test.exs",
       "test": "test build/1 When no filename was given, returns an error",
       "describe": "build/1"
     },
     {
       "line": 10,
       "module": "Elixir.GenReportTest",
-      "file": "/home/filipeabreu/dev/learn/elixir/rocketseat/ignite-template-elixir-gerando-relatorios/test/gen_report_test.exs",
+      "file": "/home/filipeabreu/dev/learn/elixir/rocketseat/ignite-template-elixir-gerando-relatorios-paralelo/test/gen_report_test.exs",
       "test": "test build/1 When passing file name return a report",
       "describe": "build/1"
     }

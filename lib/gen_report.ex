@@ -16,14 +16,35 @@ defmodule GenReport do
     "dezembro"
   ]
 
-  def build(filename) do
+  def build(filenames) do
+    filenames
+    |> Task.async_stream(&build_from_file/1)
+    |> Enum.reduce(build_report(), fn {:ok, result}, report -> sum_reports(report, result) end)
+  end
+
+  def build do
+    {:error, "Insira o nome de um arquivo"}
+  end
+
+  def build_from_file(filename) do
     filename
     |> Parser.parse_file()
     |> Enum.reduce(build_report(), fn line, report -> sum_hours(line, report) end)
   end
 
-  def build do
-    {:error, "Insira o nome de um arquivo"}
+  defp sum_reports(
+    %{"all_hours" => all_hours1, "hours_per_month" => hours_per_month1, "hours_per_year" => hours_per_year1},
+    %{"all_hours" => all_hours2, "hours_per_month" => hours_per_month2, "hours_per_year" => hours_per_year2}
+  ) do
+    %{
+      "all_hours" => merge_maps(all_hours1, all_hours2),
+      "hours_per_month" => Map.merge(hours_per_month1, hours_per_month2, fn _key, value1, value2 -> merge_maps(value1, value2) end),
+      "hours_per_year" => Map.merge(hours_per_year1, hours_per_year2, fn _key, value1, value2 -> merge_maps(value1, value2) end)
+    }
+  end
+
+  defp merge_maps(map1, map2) do
+    Map.merge(map1, map2, fn _key, value1, value2 -> value1 + value2 end)
   end
 
   def months do
